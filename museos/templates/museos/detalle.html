@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{ museo.nombre }} · Museos Bogotá</title>
+<style>
+body{font-family:system-ui,Arial;background:#f5f7fb;color:#172033;margin:0}
+main{max-width:760px;margin:40px auto;padding:24px;background:white;border:1px solid #e5e9f1;border-radius:16px}
+a{color:#2457d6}dt{font-weight:700;margin-top:16px}dd{margin:5px 0;color:#536078}
+.tag{display:inline-block;padding:5px 9px;border-radius:20px;background:#e8f7ed;color:#17643b}
+.no{background:#fff3df;color:#855500}
+</style></head><body><main>
+<p><a href="/">← Volver al listado</a></p>
+<h1>{{ museo.nombre }}</h1>
+{% if museo.entrada_libre %}<span class="tag">Entrada libre según Excel Noche de Museos 2026</span>
+{% else %}<span class="tag no">Gratuidad no confirmada</span>{% endif %}
+<dl>
+<dt>Dirección</dt><dd>{{ museo.direccion|default:"No disponible en la fuente" }}</dd>
+<dt>Horario del evento</dt><dd>{{ museo.horario_evento|default:"No disponible en la fuente" }}</dd>
+<dt>Tipo de lugar</dt><dd>{{ museo.tipo_lugar|default:"No disponible" }}</dd>
+<dt>Municipio</dt><dd>{{ museo.municipio|default:"No disponible" }}</dd>
+<dt>Fuente</dt><dd>{{ museo.fuente|default:"No indicada" }}</dd>
+<dt>Coordenadas</dt><dd>{% if museo.tiene_coordenadas %}{{ museo.latitud }}, {{ museo.longitud }}{% else %}No disponibles{% endif %}</dd>
+</dl>
+{% if museo.tiene_coordenadas %}
+<p><a target="_blank" rel="noopener" href="https://www.openstreetmap.org/?mlat={{ museo.latitud }}&amp;mlon={{ museo.longitud }}#map=17/{{ museo.latitud }}/{{ museo.longitud }}">Ver ubicación en OpenStreetMap</a></p>
+{% endif %}
+<p><b>Nota:</b> estos datos describen el registro del archivo de la Noche de los Museos 2026; no confirman horarios ni gratuidad para hoy.</p>
+</main></body></html>
