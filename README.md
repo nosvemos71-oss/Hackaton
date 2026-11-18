@@ -106,7 +106,7 @@ py -m venv venv
 ### 9.3. Activar el entorno virtual
 
 ```powershell
-.\venv\Scripts\Activate.ps1
+.\venv\Scripts\Activate.bat
 ```
 
 ### 9.4. Instalar las dependencias
